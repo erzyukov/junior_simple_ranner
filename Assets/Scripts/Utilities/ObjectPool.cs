@@ -7,6 +7,7 @@ namespace Game
 {
     public class ObjectPool<T> : MonoBehaviour where T : Enum
     {
+		[Header("Pool Settings")]
 		[SerializeField] private GameObject _container;
 		[SerializeField] private int _elementCapacity;
 

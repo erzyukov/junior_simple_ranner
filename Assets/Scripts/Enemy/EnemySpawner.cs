@@ -9,11 +9,10 @@ namespace Game
 {
     public class EnemySpawner : ObjectPool<Enemy.Type>
 	{
-		[Header("Pool Settings")]
 		[Range(0, 1f)]
 		[SerializeField] private float _spawnRate;
 		[SerializeField] private float _spawnDelay;
-		[SerializeField] private List<EnemyPrefab> _enemyPrefab;
+		[SerializeField] private List<EnemyPrefab> _enemyPrefabs;
 		[SerializeField] private Transform[] _spawnPoints;
 
 		private int _lastSpawnedPositionIndex = -1;
@@ -21,7 +20,7 @@ namespace Game
         private void Start()
         {
 			Dictionary<Enemy.Type, GameObject> prefabs = new Dictionary<Enemy.Type, GameObject>();
-			_enemyPrefab.ForEach(prefab => prefabs.Add(prefab.Type, prefab.Prefab));
+			_enemyPrefabs.ForEach(prefab => prefabs.Add(prefab.Type, prefab.Prefab));
 			Initialize(prefabs);
 
 			StartCoroutine(StartSpawn());
