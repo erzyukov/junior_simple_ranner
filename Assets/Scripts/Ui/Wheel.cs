@@ -11,7 +11,7 @@ namespace Game
 
 		private Image _image;
 
-		private void Start()
+		private void OnEnable()
 		{
 			_image = GetComponent<Image>();
 		}

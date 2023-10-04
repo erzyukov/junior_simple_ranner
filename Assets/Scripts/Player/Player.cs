@@ -10,6 +10,7 @@ namespace Game
 		private int _health;
 
 		public event UnityAction<int> HealthChanged;
+		public event UnityAction Died;
 
 		public int BaseHealth => _baseHealth;
 
@@ -23,10 +24,13 @@ namespace Game
 		{
 			_health--;
 
-			if (_health < 0 )
+			if (_health < 0)
 				_health = 0;
 
 			HealthChanged?.Invoke(_health);
+
+			if (_health == 0)
+				Died?.Invoke();
 		}
 
 		public void ApplyRepair()
